@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Voting App</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .button { padding: 10px 20px; font-size: 18px; margin: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<h1>Simple Voting Application</h1>
+
+<form method="POST" action="/vote">
+    <button class="button" type="submit" name="vote_option" value="Cats">Vote for Cats</button>
+    <button class="button" type="submit" name="vote_option" value="Dogs">Vote for Dogs</button>
+    <button class="button" type="submit" name="vote_option" value="Parrots">Vote for Parrots</button>
+</form>
+
+<h2>Results</h2>
+<table border="1" cellpadding="10">
+    <tr><th>Option</th><th>Votes</th><th>Percentage</th></tr>
+    {% for option, count in votes.items() %}
+    <tr>
+        <td>{{ option }}</td>
+        <td>{{ count }}</td>
+        <td>{{ percentages[option]|round(2) }}%</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
